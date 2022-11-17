@@ -19,7 +19,7 @@ export class About extends PureComponent {
   }
 
   render() {
-    const {counter} = this.props
+    const {counter,banners,recommend} = this.props
 
 
     return (
@@ -32,6 +32,29 @@ export class About extends PureComponent {
           <button onClick = { e => this.calcNumber(6,false)}>-6</button>
           <button onClick = { e => this.calcNumber(88,false)}>-88</button>
         </div>
+        <div>
+          <h2>轮播图数据：</h2>
+          <ul>
+          {
+            banners.map((item,index)=>{
+              return(
+                <li>{item.title}</li>
+              )
+            })
+          }
+          </ul>
+        </div>
+        <div>
+          <h2>推荐数据：</h2>
+          <ul>
+            {recommend.map((item,index)=>{
+              return(
+                <li>{item.title}</li>
+              )
+            })
+          }
+          </ul>
+        </div>
       </div>
     )
   }
@@ -42,7 +65,9 @@ export class About extends PureComponent {
 //   }
 // }可以直接简化成下面的代码
 const mapStateToProps = (state) => ({
-  counter:state.counter
+  counter:state.counter,
+  banners:state.banners,
+  recommend:state.recommend,
 })
 
 // function mapDispatchToProps(){
